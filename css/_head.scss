@@ -1,8 +1,21 @@
+$maxWidth: 1280px;
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $addMobSize: $addSize + $addSize * 0.7;
+
+    @media(max-width:767) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320) / #{$maxWidth}));
+    }
+
+    @media(min-width:767) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw / #{$maxWidth})));
+    }
+}
 .head{
     font-family: 'Inter', sans-serif;
     color: #fff;
     position: relative;
-    padding: 129px 80px 159px;
+    padding: 129px 0px 159px;
     width: 100%;
     background: radial-gradient( 30.56% 76.04% at 74.58% 0%,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     .head_bg{
@@ -17,10 +30,11 @@
     .head_pre-title{
        
         font-weight: 500;
-        font-size: 16px;
+        // font-size: 16px;
         line-height: 20px;
         letter-spacing: 3px;
         text-transform: uppercase;
+        @include adaptiv-font(16, 12);
         
     }
     .title{
@@ -29,14 +43,17 @@
         font-family: 'Sen', sans-serif;
         font-weight: 700;
         font-size: 56px;
+        
         line-height: 64px;
         letter-spacing: -2px;
+        @include adaptiv-font(56, 24);
     }
     .head_desc{
         font-weight: 400;
-        font-size: 16px;
+        // font-size: 16px;
         line-height: 28px;
         letter-spacing: 1px;
+        @include adaptiv-font (16, 12);
         
         .head_text{
             padding: 15px 0 48px;

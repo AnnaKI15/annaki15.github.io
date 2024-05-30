@@ -1,19 +1,19 @@
-@import 'reset';
-@import 'header';
-@import 'footer';
-@import 'button';
-@import 'head';
-@import 'category';
-@import 'feature';
-@import 'specialpost';
-@import 'work';
-@import 'font';
-@import 'news';
-@import 'follow';
-@import 'authors';
-@import 'blog';
+@use 'reset';
+@use 'header';
+@use 'footer';
+@use 'button';
+@use 'head';
+@use 'category';
+@use 'feature';
+@use 'specialpost';
+@use 'work';
+@use 'font';
+@use 'news';
+@use 'follow';
+@use 'authors';
+@use 'blog';
 .wrapper_container{
-    max-width: 1440px;
+    width: 1280px;
     margin: 0 auto;
     .wrapper_content {
         display: flex;
@@ -46,5 +46,20 @@
         color: #FFD050;
     }
 }
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSiZe: $pcSize - $mobSize;
+    $addMobSize: $addSiZe + $addSiZe * 0.7;
+
+    @media (max-width:767) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320) / #{$maxWidth}));
+    }
+
+    @media (min-width:767) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw / #{$maxWidth})));
+    }
+}
+
+// @include adaptiv-font(maxSizeFont,minSizeFont )
 // font-family:'Inter',sans-serif;
 // font-family:'Sen',sans-serif;
